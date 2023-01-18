@@ -8,7 +8,7 @@ export class Players {
 	@PrimaryGeneratedColumn()
 	id!: number
 
-	@Column({ type: "int", nullable: false })
+	@Column({ type: "int", unique: true, nullable: false })
 	steam!: number
 
 	@Column({ type: "bigint", default: null })
@@ -21,7 +21,7 @@ export class Players {
 	time!: number
 
 	@Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-	lastconnect!: number
+	lastconnect!: Date
 
 	@Column({ type: "int", default: 0 })
 	balance!: number

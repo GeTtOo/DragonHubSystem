@@ -21,10 +21,10 @@ export class BansList {
 	reason!: string
 
 	@Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-	start!: number
+	start!: Date
 
 	@Column({ type: "timestamp", default: null })
-	end!: number
+	end!: Date
 
 	@Column({ nullable: true })
 	@ManyToOne(() => Players, (players) => players.id)
@@ -32,7 +32,7 @@ export class BansList {
 	removedBy!: Players
 
 	@Column({ type: "timestamp", default: null })
-	removedDate!: number
+	removedDate!: Date
 
 	@Column({ type: "varchar", length: 256, default: null })
 	removedReason!: string
