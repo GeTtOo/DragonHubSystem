@@ -31,8 +31,9 @@
 		"typeorm": "0.3.11"
 	},
 	"scripts": {
-		"debug": "tsnd --respawn --transpile-only src/index.ts",
-		"build": "npx tsc",
-		"start": "node dist/index.js"
+		"debug": 	"tsnd --respawn --transpile-only src/index.ts",
+		"build": 	"npx tsc",
+		"start": 	"node dist/index.js",
+		"pack":		"npx tsc && pkg -t node18-linux-x64 --out-path ./dist/ dist/index.js"
 	}
 }
