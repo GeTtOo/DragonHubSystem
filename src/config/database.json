@@ -1,0 +1,7 @@
+{
+	"host": "localhost",
+	"port": 3306,
+	"database": "dragonhub",
+	"username": "web",
+	"password": "12345"
+}
