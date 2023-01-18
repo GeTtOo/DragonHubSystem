@@ -1,5 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
+interface IOverrides {
+	key: string
+	value: boolean
+}
+
 @Entity()
 export class AdminsGroups {
 
@@ -14,5 +19,8 @@ export class AdminsGroups {
 
 	@Column({ type: "tinyint", default: 0, unsigned: true })
 	immunity!: number
+
+	@Column({ type: "simple-array", default: null })
+	overrides!: IOverrides[]
 
 }
