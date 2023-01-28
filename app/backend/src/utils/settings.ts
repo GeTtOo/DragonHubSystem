@@ -35,8 +35,9 @@ export class Settings {
 	}
 
 	private readConfFile(): void {
-		const confPath: string = Path.join(process.cwd(), 'config');
-		
+		const confPath: string = Path.join(process.cwd(), 
+								 process.env.NODE_ENV === 'development' ? 'app/backend/src/config' : 'config');
+
 		if(!FS.existsSync(confPath))
 			FS.mkdirSync(confPath, { recursive: true });
 

@@ -43,7 +43,8 @@ async function StartApp() {
 }
 
 async function LoadModules() {
-	const modulesPath: string = Path.join(process.cwd(), 'modules');
+	const modulesPath: string = Path.join(process.cwd(), 
+								process.env.NODE_ENV === 'development' ? 'app/backend/src/modules' : 'modules');
 
 	if(FS.existsSync(modulesPath)) {
 		const modulesFiles: string[] = FS.readdirSync(modulesPath).filter(file => file.endsWith('.js'));
