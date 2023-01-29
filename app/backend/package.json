@@ -1,10 +1,10 @@
 {
-	"name": "dragonhubsystem",
+	"name": "sat",
 	"version": "1.0.0",
 	"description": "A system for a game server with the possibility of moderation and management",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/GeTtOo/DragonHubSystem.git"
+		"url": "git+https://github.com/GeTtOo/SAT.git"
 	},
 	"keywords": [
 		"web",
@@ -14,9 +14,9 @@
 	"author": "GeTtOo, Andrey::Dono",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/GeTtOo/DragonHubSystem/issues"
+		"url": "https://github.com/GeTtOo/SAT/issues"
 	},
-	"homepage": "https://github.com/GeTtOo/DragonHubSystem#readme",
+	"homepage": "https://github.com/GeTtOo/SAT#readme",
 	"type": "commonjs",
 	"devDependencies": {
 		"@types/express": "^4.17.15",
