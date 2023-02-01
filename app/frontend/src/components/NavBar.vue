@@ -13,11 +13,17 @@
 					<router-link class="nav-link" to="/">Home</router-link>
 				</li>
 				<li class="nav-item">
-					<router-link class="nav-link" to="/about">About</router-link>
+					<router-link class="nav-link" to="/about">Statistics</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="nav-link" to="/block">Block list</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="nav-link" to="/about">Shop</router-link>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Dropdown link
+						Administration
 					</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">Action</a></li>
