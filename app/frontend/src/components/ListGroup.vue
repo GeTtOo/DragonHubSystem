@@ -1,12 +1,14 @@
 <template>
 <div class="card">
 	<div class="card-header">
-		{{value.name}}
+		<strong>{{value.name}}</strong>
 	</div>
 	<ul class="list-group list-group-flush">
-		<li class="list-group-item" v-for="(item, id) in value.list" :key="id"> 
-			<h6>{{ item.name }}</h6>
-		</li>
+		<template v-for="item in value.list" :key="item.id">
+			<router-link class="list-group-item list-group-item-action" :to="'users/' + item.url">
+				<h6>{{ item.name }}</h6>
+			</router-link>
+		</template>
 	</ul>
 </div>
 </template>
@@ -24,5 +26,25 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-	
+	.card {
+		.card-header {
+			color: $white;
+			background-color: $gray-800;
+			border-bottom: 2px solid $orange-500;
+		}
+
+		.list-group-item {
+			background-color: $gray-100;
+		}
+
+		a:hover {
+			color: $white;
+			background-color: $orange-500;
+			box-shadow:
+			inset 
+				0 -3em 3em rgba($gray-900, 0.1),
+				0.3em 0.3em 1em rgba($gray-900, 0.1);
+			text-shadow: none;
+		}
+	}
 </style>
