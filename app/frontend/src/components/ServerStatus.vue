@@ -12,29 +12,8 @@
 							<small class="text-start">
 								<strong>Online: 10/16</strong>
 							</small>
-						</div>
-						<div class="row">
-							<div class="col-sm">
-								<p class="text-start map"><small>de_dust2</small></p>
-							</div>
-							<div class="col">
-								<a href="" class="btn btn-primary btn-wrapper-end"><strong>Connect</strong></a>
-							</div>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="col-lg-4 mb-2 mx-auto">
-			<ul class="list-group">
-				<li class="list-group-item">
-					<div class="container text-center">
-						<div class="row text-start">
-							<h5><strong>Server name</strong></h5>
-						</div>
-						<div class="row">
-							<small class="text-start">
-								<strong>Online: 10/16</strong>
+							<small class="text-end map">
+								127.0.0.1:27015
 							</small>
 						</div>
 						<div class="row">
@@ -59,6 +38,36 @@
 						<div class="row">
 							<small class="text-start">
 								<strong>Online: 10/16</strong>
+							</small>
+							<small class="text-end map">
+								127.0.0.1:27015
+							</small>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<p class="text-start map"><small>de_dust2</small></p>
+							</div>
+							<div class="col">
+								<a href="" class="btn btn-primary btn-wrapper-end"><strong>Connect</strong></a>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-4 mb-2 mx-auto">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="container text-center">
+						<div class="row text-start">
+							<h5><strong>Server name</strong></h5>
+						</div>
+						<div class="row">
+							<small class="text-start">
+								<strong>Online: 10/16</strong>
+							</small>
+							<small class="text-end map">
+								127.0.0.1:27015
 							</small>
 						</div>
 						<div class="row">
