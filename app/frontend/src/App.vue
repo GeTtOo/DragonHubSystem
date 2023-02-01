@@ -1,17 +1,19 @@
 <template>
 <nav-bar/>
-<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto">
+<div class="px-3 py-3 pt-md-3 pb-md-4 mx-auto">
 	<router-view/>
 </div>
+<footer-bar/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import NavBar from './components/NavBar.vue';
+import FooterBar from './components/FooterBar.vue';
 
 export default defineComponent({
 	components: {
-		NavBar
+		NavBar, FooterBar
 	}
 });
 </script>
