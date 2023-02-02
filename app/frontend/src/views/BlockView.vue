@@ -2,13 +2,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 mx-auto">
+				<h4><strong>Mutes list</strong></h4>
 				<InfoTable :data="tableMutes"/>
 			</div>
 			<div class="col-xl-6 mx-auto">
+				<h4><strong>Bans list</strong></h4>
 				<InfoTable :data="tableBans"/>
 			</div>
 		</div>
 		<div class="col-xl-12">
+			<h4><strong>Admins actions</strong></h4>
 			<InfoTable :data="tableBans"/>
 		</div>
 	</div>
@@ -20,7 +23,6 @@ import InfoTable from '@/components/InfoTable.vue';
 import IInfoTable from '@/types/IInfoTable';
 
 const bans: IInfoTable = {
-	name: 'Block list',
 	title: ['Player', 'Administrator', 'Reason', 'Time'],
 	data: [
 		[
@@ -88,7 +90,6 @@ const bans: IInfoTable = {
 }
 
 const mutes: IInfoTable = {
-	name: 'Mute list',
 	title: ['Player', 'Administrator', 'Type', 'Reason', 'Time'],
 	data: [
 		[

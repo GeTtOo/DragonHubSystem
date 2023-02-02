@@ -1,5 +1,4 @@
 export default interface IInfoTable {
-	name: string
 	title: string[]
 	data: ITableRow[]
 	pages: number

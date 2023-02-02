@@ -1,6 +1,5 @@
 <template>
 <table class="table align-middle caption-top">
-	<caption><strong>{{ data.name }}</strong></caption>
 	<thead>
 		<tr>
 			<th scope="col" v-for="(item, index) in data.title" :key="index">{{ item }}</th>

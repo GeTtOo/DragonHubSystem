@@ -4,7 +4,7 @@
 		<strong>{{value.name}}</strong>
 	</div>
 	<ul class="list-group list-group-flush">
-		<template v-for="item in value.list" :key="item.id">
+		<template v-for="(item, index) in value.list" :key="index">
 			<router-link class="list-group-item list-group-item-action" :to="'users/' + item.url">
 				<h6>{{ item.name }}</h6>
 			</router-link>

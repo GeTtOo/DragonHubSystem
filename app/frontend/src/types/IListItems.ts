@@ -4,7 +4,6 @@ export default interface IListItems {
 }
 
 interface IPlayers {
-	id: number,
 	name: string,
 	url: string
 }
