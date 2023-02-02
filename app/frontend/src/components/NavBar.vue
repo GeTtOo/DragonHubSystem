@@ -26,9 +26,8 @@
 						Administration
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+						<li><router-link class="dropdown-item" to="/admin">Main</router-link></li>
+						<li><router-link class="dropdown-item" to="/users">Users</router-link></li>
 					</ul>
 				</li>
 			</ul>
