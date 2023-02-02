@@ -1,8 +1,10 @@
 <template>
 <nav-bar/>
-<div class="px-3 py-3 pt-md-3 pb-md-4 mx-auto">
-	<router-view/>
-</div>
+<main class="flex-shrink-0">
+	<div class="px-3 py-3 pt-md-3 pb-md-4 mx-auto">
+		<router-view/>
+	</div>
+</main>
 <footer-bar/>
 </template>
 
@@ -14,6 +16,9 @@ import FooterBar from './components/FooterBar.vue';
 export default defineComponent({
 	components: {
 		NavBar, FooterBar
+	},
+	mounted() {
+		document.title = 'SAT'
 	}
 });
 </script>
@@ -31,5 +36,8 @@ html, body {
 	font-family: var(--bs-body-font-family), Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 </style>
