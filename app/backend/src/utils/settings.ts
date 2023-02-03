@@ -13,6 +13,7 @@ export interface IGlobalConfig {
 	port: number;
 	useStatic: boolean;
 	staticDir: string;
+	apiKey: string;
 }
 
 export class Settings {
@@ -36,7 +37,7 @@ export class Settings {
 
 	private readConfFile(): void {
 		const confPath: string = Path.join(process.cwd(), 
-								 process.env.NODE_ENV === 'development' ? 'app/backend/src/config' : 'config');
+								process.env.NODE_ENV === 'development' ? '/src/config' : 'config');
 
 		if(!FS.existsSync(confPath))
 			FS.mkdirSync(confPath, { recursive: true });
