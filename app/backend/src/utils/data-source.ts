@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm"
-import { Settings, IDatabase } from "./settings"
+import { DatabaseConfig } from "../classes/config/DatabaseSettings"
 
 import { Players } from "../entity/Players"
 import { BansList } from "../entity/BansList"
@@ -8,7 +8,7 @@ import { Inventory } from "../entity/Inventory"
 import { Admins } from "../entity/Admins"
 import { AdminsGroups } from "../entity/AdminsGroups"
 
-const Config = new Settings('database', {host: 'localhost', port: 3306, database: '', username: '', password: ''} as IDatabase).getDatabaseConfig();
+const Config = new DatabaseConfig('database').setting;
 
 export const AppDataSource = new DataSource({
 	type: "mysql",
