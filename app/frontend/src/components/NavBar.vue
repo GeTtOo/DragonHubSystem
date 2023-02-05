@@ -37,9 +37,9 @@
 						<fa icon="fa-solid fa-user" />
 					</a>
 					<ul class="dropdown-menu dropdown-menu-lg-end">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+						<li><router-link class="dropdown-item" to="/user/12345">My profile</router-link></li>
+						<li><router-link class="dropdown-item" to="/settings">Settings</router-link></li>
+						<li><router-link class="dropdown-item" to="/logout">Logout</router-link></li>
 					</ul>
 				</li>
 			</ul>
@@ -59,6 +59,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 	nav {
 		border-bottom: 2px solid $orange-500;
+	}
+	.nav-link {
+		color: $gray-100;
 	}
 	.router-link-active {
 		color: $orange-500 !important;

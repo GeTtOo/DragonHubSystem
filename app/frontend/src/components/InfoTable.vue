@@ -80,11 +80,11 @@ export default defineComponent({
 	}
 
 	.expired {
-		background-color: #63c930 !important;
+		background-color: #57910c !important;
 	}
 
 	.relevant {
-		background-color: #dd3030 !important;
+		background-color: #bd1e1e !important;
 	}
 
 	.fa {

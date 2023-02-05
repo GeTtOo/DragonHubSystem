@@ -17,24 +17,39 @@ export default defineComponent({
 	data() {
 		return {
 			data: {
-				labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+				labels: [
+					'22 January', '23 January', '24 January', '25 January', '26 January', '27 January', '28 January',
+					'29 January', '30 January', '31 January', '1 February', '2 February', '3 February', '4 February'
+				],
 				datasets: [{
 					label: 'Players',
-					data: [10, 12, 6, 21, 8, 15, 3],
-					fill: false,
-					borderColor: '#2b3035',
-					tension: 0.1
+					data: [
+						10, 12, 6, 21, 8, 15, 3,
+						10, 12, 6, 21, 8, 15, 3
+					],
+					//borderColor: '#2b3035',
+					//backgroundColor: '#2b3035',
+					borderColor: 'rgba(253, 126, 20, 80%)',
+					backgroundColor: 'rgba(253, 126, 20, 80%)',
+					tension: 0.3
 				},
 				{
 					label: 'New Players',
-					data: [4, 6, 1, 14, 2, 11, 0],
-					fill: false,
-					borderColor: '#b0b2b5',
-					tension: 0.1
+					data: [
+						4, 6, 1, 14, 2, 11, 0,
+						4, 6, 1, 14, 2, 11, 0
+					],
+					//borderColor: '#fd7e14',
+					//backgroundColor: '#fd7e14',
+					borderColor: 'rgba(253, 126, 20, 35%)',
+					backgroundColor: 'rgba(253, 126, 20, 35%)',
+					tension: 0.3
 				}]
 			},
 			options: {
-				backgroundColor: '#fd7e14'
+				layout: {
+					padding: 0
+				},
 			}
 		}
 	},

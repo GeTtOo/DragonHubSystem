@@ -1,6 +1,12 @@
 <template>
 <ServerStatus/>
-
+<div class="container mt-3">
+	<div class="row">
+		<div class="col-lg mb-2 mx-auto">
+			<NewsSlide/>
+		</div>
+	</div>
+</div>
 <div class="container mt-3">
 	<div class="row">
 		<div class="col-lg-4 mb-2 mx-auto">
@@ -11,13 +17,6 @@
 		</div>
 		<div class="col-lg-4 mb-2 mx-auto">
 			<ListGroup :value="lastPlayers"/>
-		</div>
-	</div>
-</div>
-<div class="container mt-3">
-	<div class="row">
-		<div class="col-lg mb-2 mx-auto">
-			<NewsSlide/>
 		</div>
 	</div>
 </div>
@@ -38,11 +37,6 @@ const lastPlayers: IListItems = {
 		{name: "Player 2", url: "1"},
 		{name: "Player 3", url: "1"},
 		{name: "Player 4", url: "1"},
-		{name: "Player 5", url: "1"},
-		{name: "Player 6", url: "1"},
-		{name: "Player 7", url: "1"},
-		{name: "Player 8", url: "1"},
-		{name: "Player 9", url: "1"}
 	],
 }
 
@@ -54,11 +48,6 @@ const adminAction: IListItems = {
 		{name: "Admin Player 10 Kick Player 2", url: "1"},
 		{name: "Admin Player 10 Kick Player 3", url: "1"},
 		{name: "Admin Player 10 Kick Player 4", url: "1"},
-		{name: "Admin Player 10 Kick Player 5", url: "1"},
-		{name: "Admin Player 10 Kick Player 6", url: "1"},
-		{name: "Admin Player 10 Kick Player 7", url: "1"},
-		{name: "Admin Player 10 Kick Player 8", url: "1"},
-		{name: "Admin Player 10 Kick Player 9", url: "1"}
 	]
 }
 
@@ -70,11 +59,6 @@ const topPlayers: IListItems = {
 		{name: "Player 2", url: "1"},
 		{name: "Player 3", url: "1"},
 		{name: "Player 4", url: "1"},
-		{name: "Player 5", url: "1"},
-		{name: "Player 6", url: "1"},
-		{name: "Player 7", url: "1"},
-		{name: "Player 8", url: "1"},
-		{name: "Player 9", url: "1"}
 	]
 }
 
