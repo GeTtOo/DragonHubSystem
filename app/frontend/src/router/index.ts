@@ -2,6 +2,11 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
 	{
+		path: '/:pathMatch(.*)*',
+		name: '404',
+		component: () => import('@/views/NotFoundView.vue')
+	},
+	{
 		path: '/',
 		name: 'home',
 		component: () => import('@/views/HomeView.vue')
@@ -25,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
 		path: '/users',
 		name: 'users',
 		component: () => import('@/views/admin/UsersView.vue')
+	},
+	{
+		path: '/user/:id(\\d+)',
+		name: 'user',
+		component: () => import('@/views/UserView.vue')
 	}
 ]
 
