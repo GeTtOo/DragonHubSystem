@@ -1,8 +1,8 @@
 <template>
 	<div class="container">
 		<div class="row mb-3">
-			<div class="col-lg-6 mx-auto"><ChartBar/></div>
-			<div class="col-lg-6 mx-auto"><ChartBar/></div>
+			<div class="col-lg mx-auto"><ChartBar/></div>
+			<div class="col-lg mx-auto"><ChartBar/></div>
 		</div>
 		<div class="row mb-3">
 			<h4><strong>Admins actions</strong></h4>

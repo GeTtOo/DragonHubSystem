@@ -37,6 +37,9 @@
 						<fa icon="fa-solid fa-user" />
 					</a>
 					<ul class="dropdown-menu dropdown-menu-lg-end">
+						<li><span class="dropdown-item-text">GeTtOo</span></li>
+						<li><span class="dropdown-item-text">Balance: 0$</span></li>
+						<li><hr class="dropdown-divider"></li>
 						<li><router-link class="dropdown-item" to="/user/12345">My profile</router-link></li>
 						<li><router-link class="dropdown-item" to="/settings">Settings</router-link></li>
 						<li><router-link class="dropdown-item" to="/logout">Logout</router-link></li>
