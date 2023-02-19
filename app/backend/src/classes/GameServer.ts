@@ -26,7 +26,7 @@ export class GameServerControl  {
 	private _wss: WebSocket.Server;
 	private _servers: Map<WebSocket, IServer> = new Map<WebSocket, IServer>();
 	//private _wsPackets: { [key: number]: Array<(ws: WebSocket, message: object) => void> } = {};
-	private _packetsList: { [key: number]: (ws: WebSocket, message: object) => void } = {};
+	private _packetsList: Map <number, (ws: WebSocket, message: object) => void> = new Map();
 	
 	constructor() {
 		this._wss = new WebSocket.Server({ port: App.settings.gameServerPort, host: '0.0.0.0'});
@@ -39,9 +39,7 @@ export class GameServerControl  {
 			for (const file of files) {
 				if (file.endsWith('.ts')) {
 					const { [file.split('.')[0]]: PacketClass } = await import(Path.join(dir, file));
-					const packetid = PacketClass.packetId;
-
-					this._packetsList[packetid] = PacketClass;
+					this._packetsList.set(PacketClass.packetId, PacketClass);
 				}
 			}
 		})();
@@ -74,10 +72,12 @@ export class GameServerControl  {
 				if(cmd.id === undefined) return;
 				
 				if(cmd.id in this._packetsList) {
-					this._packetsList[cmd.id](ws, cmd);
+					//this._packetsList[cmd.id](ws, cmd);
+					new (this._packetsList.get(cmd.id) as any)(ws, cmd);
 				}
 				/*if(cmd.id in this._wsPackets) {
 					this._wsPackets[cmd.id].forEach(fn => fn(ws, cmd));
+					this._packetsList[cmd.id](ws, cmd);
 				}*/
 			});
 			
