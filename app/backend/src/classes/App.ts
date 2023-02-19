@@ -32,7 +32,6 @@ class App {
 		App.Middlewares(appInit.middleWares);
 		App.Routes(appInit.controllers);
 		App.GameServer = new GameServerControl();
-		
 		App.LoadModules();
 	}
 
@@ -81,6 +80,7 @@ class App {
 		App.WebServer.listen(App._port, () => {
 			console.log(`Server successfully start on port ${App._port}`);
 		})
+		//App.GameServer.Subscribe(10, (ws: WebSocket, msg: object) => { console.log(msg) })
 	}
 }
 

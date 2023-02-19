@@ -1,3 +1,4 @@
+import App from "../classes/App";
 import Express, { Request, Response } from "express";
 import IController from "../interfaces/IController";
 
@@ -14,7 +15,8 @@ class HomeController implements IController {
 	}
 
 	index = async (req: Request, res: Response): Promise<Response> => {
-		return res.status(200).send({ status: 200});
+		const servers = App.GameServer.GetServersInfo();
+		return res.status(200).send({ status: 200, servers: JSON.stringify(servers)});
 	}
 }
 
