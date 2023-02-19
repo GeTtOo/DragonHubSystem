@@ -1,5 +1,6 @@
 {
 	"port": 3000,
+	"gameServerPort": 3001,
 	"useStatic": false,
 	"staticDir": "",
 	"apiKey": "vCEVvLs,.5_tWd.fgs)tiwSwUKaYgo4wTzU+9S%NsM5y9(GlUa!kzIc1Ur(i^C6(#,$kl)$,1ET$oISDo1)S1Vgg9jNGFzbv38O0ixVPYS#2O6*phx,IGAObVGNK$J&wu,iRz+rC7@VCFk+yuKqK.ZSMjqt.d#Ne4twtl=H=vrAG=1Fam.w(=7#^E%?DJ4^27m6WWS*fYY)tKuTSKrVV4UevhrqMc*?R@#b_nLketkDy=1CULanT.)GYDWMmnoq_"

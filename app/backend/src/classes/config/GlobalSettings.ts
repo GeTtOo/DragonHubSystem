@@ -2,6 +2,7 @@ import { files } from "../File";
 
 interface IGlobalConfig {
 	port: number;
+	gameServerPort: number;
 	useStatic: boolean;
 	staticDir: string;
 	apiKey: string;
@@ -12,9 +13,10 @@ export class GlobalConfig extends files {
 		if(!params) {
 			params = {
 				port: 3000,
+				gameServerPort: 3001,
 				useStatic: false,
 				staticDir: '/',
-				apiKey: files.GenerateKey(128)
+				apiKey: files.GenerateKey(256)
 			};
 		}
 

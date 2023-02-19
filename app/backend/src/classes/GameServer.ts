@@ -1,72 +1,65 @@
+import WebSocket = require("ws");
+import { IncomingMessage } from "http"
+import App from "./App";
+import { ModelGameServer } from "../entity/GameServers";
+import { read } from "fs";
+
 interface IServer {
+	id: number;
 	ip: string;
 	port: number;
 	name: string;
-	players: iPlayers[];
+	map: string;
+	players: IPlayers[];
 	webSocket: WebSocket;
 }
 
-interface iPlayers {
+interface IPlayers {
 	id: number;
+	steamid64: number;
+	name: string;
 	session: number;
 }
 
-export class GameServer {
+export class GameServerControl  {
 	private _servers: IServer[];
+	private _wss: WebSocket.Server;
 	
-	constructor(key:string) {
+	constructor() {
 		this._servers = [];
+		this._wss = new WebSocket.Server({ port: App.settings.gameServerPort, host: '0.0.0.0'});
+		this._WSGameServerInit();
 	}
 
-	public pustServer(server: IServer) {
-		this._servers.push(server);
-	}
+	private _WSGameServerInit() {
+		this._wss.on('connection', (ws: WebSocket, req: IncomingMessage) => {
+			ws.on('open', async () => {
+				// req.headers['x-forwarded-for'] for nginx proxy
+				const ip = req.socket.remoteAddress;
+				const key = req.headers['sat-auth-key']?.toString();
+				
+				if(ip === undefined || key === undefined) {
+					ws.close(1008);
+					return;
+				}
 
-	public getServers(): IServer[] {
-		return this._servers;
-	}
+				const res = await App.DataSource.manager.findOneBy(ModelGameServer, { ip: ip, key: key });
+				if(res === null) {
+					ws.close(1007);
+					return;
+				}
 
-	public getServer(ip: string): IServer | null {
-		let server: IServer | undefined = this._servers.find(server => server.ip === ip);
+				const srv: IServer = { id: res.id, ip: res.ip, map: '', name: '', port: res.port, webSocket: ws, players: [] }
+				this._servers.push(srv);
+			});
 
-		if(server !== undefined)
-			return server;	
-		else 
-			return null;
-	}
-
-	public dropServer() {
-
+			ws.on('message', async (message: string) => {
+				console.log(message);
+			});
+			
+			ws.on('error', async(err) => {
+				console.log(err);
+			})
+		});
 	}
 }
-
-/* WS test code 
-import * as http from 'http';
-import WebSocket from "ws";
-
-//const server: http.Server = http.createServer(app);
-const wss: WebSocket.Server = new WebSocket.Server({ port: 3001, host: '0.0.0.0'});
-
-interface ITest {
-	command: number
-	data: object
-}
-
-wss.on('connection', (ws: WebSocket, req: http.IncomingMessage) => {
-	//TODO: Logger, WS on Express port
-	setTimeout(() => {
-		if(req.socket.remoteAddress !== undefined && GameServers.getServer(req.socket.remoteAddress) !== null)
-			return;
-		
-		console.log('The connection was terminated because the server was not authorized\nServer ip: ' + req.socket.remoteAddress);
-		ws.close(1000);
-	}, 5000);
-
-	ws.on('message', (message: ITest) => {
-		console.log(message)
-		
-		console.log(req.socket.remoteAddress);
-		console.log(message.toString());
-	})
-})
-*/

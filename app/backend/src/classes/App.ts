@@ -1,8 +1,9 @@
 import FS from "fs";
 import Path from "path";
-import { GlobalConfig } from "./config/GlobalSettings";
-import Express, { Application } from "express";
+import Express from "express";
+import { GameServerControl } from "./GameServer";
 import { AppDataSource } from "../utils/data-source"
+import { GlobalConfig } from "./config/GlobalSettings";
 
 interface IAppInit {
 	middleWares: any; 
@@ -10,46 +11,50 @@ interface IAppInit {
 }
 
 class App {
-	public app: Application;
-	public port: number;
-	private _settings = new GlobalConfig('core').setting;
+	public static WebServer: Express.Application;
+	public static GameServer: GameServerControl;
+	public static DataSource = AppDataSource;
+	private static _port: number;
+	public static readonly settings = new GlobalConfig('core').setting;
 
-	constructor(appInit: IAppInit) {
-		this.app = Express();
-		this.app.use(Express.json());
-		this.app.use(Express.urlencoded({ extended: true }));
-		this.port = this._settings.port;
+	public static async Init(appInit: IAppInit) {
+		App.WebServer = Express();
+		App.WebServer.use(Express.json());
+		App.WebServer.use(Express.urlencoded({ extended: true }));
+		App._port = App.settings.port;
 
-		AppDataSource.initialize().catch((err) => {
+		await App.DataSource.initialize().catch((err) => {
 			console.error(`Error during Data Source initialization: ${err}`);
 			process.exit(1);
 		});
 
-		this.middlewares(appInit.middleWares);
-		this.routes(appInit.controllers);
-		this.assets();
-		this.LoadModules();
+		App.Assets();
+		App.Middlewares(appInit.middleWares);
+		App.Routes(appInit.controllers);
+		App.GameServer = new GameServerControl();
+		
+		App.LoadModules();
 	}
 
-	private middlewares(middleWares: { forEach: (arg0: (middleWare: any) => void) => void; }) {
+	private static Middlewares(middleWares: { forEach: (arg0: (middleWare: any) => void) => void; }) {
 		middleWares.forEach(middleWare => {
-			this.app.use(middleWare)
-		})
-    }
-
-	private routes(controllers: { forEach: (arg0: (controller: any) => void) => void; }) {
-		controllers.forEach(controller => {
-			this.app.use('/', controller.router)
+			App.WebServer.use(middleWare)
 		})
 	}
 
-	private assets() {
-		if(this._settings.useStatic) {
-			this.app.use(Express.static(this._settings.staticDir));
+	private static Routes(controllers: { forEach: (arg0: (controller: any) => void) => void; }) {
+		controllers.forEach(controller => {
+			App.WebServer.use('/', controller.router)
+		})
+	}
+
+	private static Assets() {
+		if(App.WebServer.settings.useStatic) {
+			App.WebServer.use(Express.static(App.settings.staticDir));
 		}
 	}
 	//TODO: fix this...
-	private async LoadModules() {
+	private static async LoadModules() {
 		const modulesPath: string = 
 			Path.join(process.cwd(), process.env.NODE_ENV === 'development' ? 'src/modules' : 'modules');
 	
@@ -62,7 +67,7 @@ class App {
 					const module = require(filePath);
 					
 					if(module.type === 'router')
-						this.app.use('/' + module.name, module.router);
+						App.WebServer.use('/' + module.name, module.router);
 				} catch(err) {
 					console.error(`Error loading module ${file}: ` + err);
 				}
@@ -72,11 +77,11 @@ class App {
 		}
 	}
 
-	public listen() {
-		this.app.listen(this.port, () => {
-			console.log(`Server successfully start on port ${this.port}`)
+	public static Listen() {
+		App.WebServer.listen(App._port, () => {
+			console.log(`Server successfully start on port ${App._port}`);
 		})
 	}
 }
 
-export { App as default, AppDataSource as ADS };
+export default App;
