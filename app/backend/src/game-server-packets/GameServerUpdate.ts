@@ -11,7 +11,7 @@ interface IGameServerInit {
 
 export class GameServerUpdate {
 	public static packetId: number = 10;
-	
+
 	constructor(ws: WebSocket, pck: IGameServerInit) {
 		const { action, name, map, players } = pck;
 	
