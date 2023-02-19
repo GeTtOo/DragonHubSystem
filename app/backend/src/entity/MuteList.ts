@@ -1,21 +1,21 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
-import { Players } from "./Players"
+import { ModelPlayers } from "./Players"
 
 @Entity()
-export class MuteList {
+export class ModelMuteList {
 
 	@PrimaryGeneratedColumn()
 	id!: number
 
 	@Column({ nullable: false })
-	@ManyToOne(() => Players, (players) => players.id)
+	@ManyToOne(() => ModelPlayers, (players) => players.id)
 	@JoinColumn({ name: "player", referencedColumnName: "id" })
-	player!: Players
+	player!: ModelPlayers
 
 	@Column({ nullable: false })
-	@ManyToOne(() => Players, (players) => players.id)
+	@ManyToOne(() => ModelPlayers, (players) => players.id)
 	@JoinColumn({ name: "admin", referencedColumnName: "id" })
-	admin!: Players
+	admin!: ModelPlayers
 
 	@Column({ type: "tinyint", default: 0 })
 	type!: number
@@ -30,9 +30,9 @@ export class MuteList {
 	end!: Date
 
 	@Column({ nullable: true })
-	@ManyToOne(() => Players, (players) => players.id)
+	@ManyToOne(() => ModelPlayers, (players) => players.id)
 	@JoinColumn({ name: "removedBy", referencedColumnName: "id" })
-	removedBy!: Players
+	removedBy!: ModelPlayers
 
 	@Column({ type: "timestamp", default: null })
 	removedDate!: Date

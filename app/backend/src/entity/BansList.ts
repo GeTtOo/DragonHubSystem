@@ -1,21 +1,21 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
-import { Players } from "./Players"
+import { ModelPlayers } from "./Players"
 
 @Entity()
-export class BansList {
+export class ModelBansList {
 
 	@PrimaryGeneratedColumn()
 	id!: number
 
 	@Column({ nullable: false })
-	@ManyToOne(() => Players, (players) => players.id)
+	@ManyToOne(() => ModelPlayers, (players) => players.id)
 	@JoinColumn({ name: "player", referencedColumnName: "id" })
-	player!: Players
+	player!: ModelPlayers
 
 	@Column({ nullable: false })
-	@ManyToOne(() => Players, (players) => players.id)
+	@ManyToOne(() => ModelPlayers, (players) => players.id)
 	@JoinColumn({ name: "admin", referencedColumnName: "id" })
-	admin!: Players
+	admin!: ModelPlayers
 
 	@Column({ type: "varchar", length: 256, default: null })
 	reason!: string
@@ -27,9 +27,9 @@ export class BansList {
 	end!: Date
 
 	@Column({ nullable: true })
-	@ManyToOne(() => Players, (players) => players.id)
+	@ManyToOne(() => ModelPlayers, (players) => players.id)
 	@JoinColumn({ name: "removedBy", referencedColumnName: "id" })
-	removedBy!: Players
+	removedBy!: ModelPlayers
 
 	@Column({ type: "timestamp", default: null })
 	removedDate!: Date

@@ -6,7 +6,7 @@ interface IOverrides {
 }
 
 @Entity()
-export class AdminsGroups {
+export class ModelAdminsGroups {
 
 	@PrimaryGeneratedColumn()
 	id!: number

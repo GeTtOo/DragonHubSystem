@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm"
-import { Admins } from "./Admins"
-import { AdminsGroups } from "./AdminsGroups"
+import { ModelAdmins } from "./Admins"
+import { ModelAdminsGroups } from "./AdminsGroups"
 
 @Entity()
-export class Players {
+export class ModelPlayers {
 
 	@PrimaryGeneratedColumn()
 	id!: number
@@ -27,13 +27,13 @@ export class Players {
 	balance!: number
 
 	@Column({ nullable: true })
-	@ManyToOne(() => Admins, (admin) => admin.id)
+	@ManyToOne(() => ModelAdmins, (admin) => admin.id)
 	@JoinColumn({ name: "admin", referencedColumnName: "id" })
-	admin!: Admins
+	admin!: ModelAdmins
 
 	@Column({ nullable: true })
-	@ManyToOne(() => AdminsGroups, (group) => group.id)
+	@ManyToOne(() => ModelAdminsGroups, (group) => group.id)
 	@JoinColumn({ name: "group", referencedColumnName: "id" })
-	group!: AdminsGroups
+	group!: ModelAdminsGroups
 
 }

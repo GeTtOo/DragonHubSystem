@@ -1,16 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
-import { Players } from "./Players"
+import { ModelPlayers } from "./Players"
 
 @Entity()
-export class Inventory {
+export class ModelInventory {
 
 	@PrimaryGeneratedColumn()
 	id!: number
 
 	@Column({ nullable: false })
-	@ManyToOne(() => Players, (players) => players.id)
+	@ManyToOne(() => ModelPlayers, (players) => players.id)
 	@JoinColumn({ name: "player", referencedColumnName: "id" })
-	player!: Players
+	player!: ModelPlayers
 
 	@Column({ type: "simple-json", nullable: false })
 	item!: { name: string, description: string, timeStart: number, timeEnd: number, meta: object }
